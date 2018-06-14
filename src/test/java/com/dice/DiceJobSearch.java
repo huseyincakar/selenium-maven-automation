@@ -10,14 +10,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DiceJobSearch {
+	
 
+	static String url = "https://dice.com";
+	static String location = "Boston";
+	
+	
 	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().fullscreen();
 		
-		String url = "https://dice.com";
+		
 		driver.get(url);
 		
 		String actualTitle = driver.getTitle();
@@ -38,7 +43,7 @@ public class DiceJobSearch {
 		driver.findElement(By.id("search-field-keyword")).sendKeys("Java selenium");
 		driver.findElement(By.id("search-field-location")).clear();
 		
-		driver.findElement(By.id("search-field-location")).sendKeys("Boston");
+		driver.findElement(By.id("search-field-location")).sendKeys(location);
 		driver.findElement(By.id("findTechJobs")).click();
 		
 		String count = driver.findElement(By.id("posiCountId")).getText();
